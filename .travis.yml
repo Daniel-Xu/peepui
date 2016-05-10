@@ -1,22 +1,23 @@
----
 language: node_js
 node_js:
-  - "4"
-
+- '4'
 sudo: false
-
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 before_install:
-  - npm config set spin false
-  - npm install -g bower
-  - npm install phantomjs-prebuilt
-
+- npm config set spin false
+- npm install -g bower
+- npm install phantomjs-prebuilt
 install:
-  - npm install
-  - bower install
-
+- npm install
+- bower install
 script:
-  - npm test
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: RyYIj8QSYD+XG5t71NleNrnZHIrLGSDl0luOx64yJq5e52M3j/aR2Cdfty+/ir9QoYMp4vuPs8StBRRYPD07iZNX9JkBY9zsrXhb6z4kPoZu5Q/2J4BuHgC7aBAJbvs++hWND+ndqW5wxCidR9VjSvfiEFyODeqx6hJ2CDmdKmTCH6eIxHcXps8WhirCPJxwuVH+peSGrXiYKwzyaTxGjvdYi1k1LN7vajV3yhqyhvEYoZ7d07rLvVmdE7o78xhozJoHZaHHUM7NyVTOeXvmsFna9Lq6DIzUo1Yii/GmSozmNCPpycN68/PkU4pk+UzeANrT1iuEaM1W9wR+Ar5vDEkT72eayTB3Z+IRG/l6bkw5clMXLda7DgqQ6c+xOCI83QLeLJV/lW6WPkzO3XIpsI3sgWZH+oc67LvBSJDRRTWPLvqBrDN2rPItPuhZ/xxRGbUqkwJtm4tYbbX9dMuMDoiu0zQgqq4s0XxYWsIBjWv390d/956lFHNmT5Esy2vGX64tAVIkojxO3rrwX+G3gS8chD2OAYQuZWT0LKZcrkMCcR1T3ElW/oMXuMcwpJj8KYkw6OX3UvKG71nLuvIt/rxTJtBbVQlp0cs+VyDZMhUBQZrXvLZIlX9js/2okNuPPJV/bcFSOSfr1sA7yTyW/d0zIxPeLYgc8F0F9tWVHTQ=
+  app: mighty-stream-25397
+  on:
+    repo: Daniel-Xu/peepui
