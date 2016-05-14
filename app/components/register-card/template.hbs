@@ -1,12 +1,13 @@
 {{#x-card
   title='Signup with Peepchat'
+  buttonDisabled=validations.messages.length
   onSubmit=attrs.onSubmit
   buttonText='Register'}}
   <div class="row">
     {{x-input
       value=model.email
       classNames='col s12'
-      errors=validations.attrs.model.email.messages
+      errors=(v-get this 'model.email' 'messages')
       type='email'
       label='Username'}}
   </div>
@@ -14,7 +15,7 @@
     {{x-input
       value=model.password
       classNames='col s12'
-      errors=validations.attrs.model.password.messages
+      errors=(v-get this 'model.password' 'messages')
       type='password'
       label='Password'}}
   </div>
@@ -23,7 +24,7 @@
     {{x-input
       value=model.passwordConfirmation
       classNames='col s12'
-      errors=validations.attrs.model.passwordConfirmation.messages
+      errors=(v-get this 'model.passwordConfirmation' 'messages')
       type='password'
       label='Confirm Password'}}
   </div>
