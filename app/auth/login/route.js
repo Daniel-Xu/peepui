@@ -3,6 +3,8 @@ const {inject} = Ember;
 
 export default Ember.Route.extend({
   session: inject.service(),
+  flashMessages: inject.service(),
+
   model() {
     return this.store.createRecord('user');
   },
@@ -14,8 +16,16 @@ export default Ember.Route.extend({
         user.get('email'),
         user.get('password')
       ).then(() => {
-      }, err => {
-        console.log(err);
+        this.get('flashMessages').success('Logged In');
+      }).catch(response => {
+        let {errors} = response;
+        if (errors.mapBy('code').indexOf(401) >= 0) {
+          this.get('flashMessages')
+            .danger('There was a problem with your username or password, please try again');
+        } else {
+          this.get('flashMessages').danger('Service Error');
+        }
+
       });
     }
   }
