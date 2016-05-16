@@ -1,1 +1,16 @@
+{{#x-nav title="PEEPchat" as |n|}}
+  <ul id="dropdown1" class="dropdown-content">
+    <li>
+      <a onclick={{route-action "logout"}}>Logout</a>
+    </li>
+  </ul>
+  {{#n.desktop-menu}}
+    {{#n.link-to 'auth.login'}}Login{{/n.link-to}}
+    {{#n.link-to 'auth.register'}}Register{{/n.link-to}}
+  {{/n.desktop-menu}}
+  {{#n.side-nav}}
+    {{#n.link-to 'auth.login'}}Login{{/n.link-to}}
+    {{#n.link-to 'auth.register'}}Register{{/n.link-to}}
+  {{/n.side-nav}}
+{{/x-nav}}
 {{outlet}}
